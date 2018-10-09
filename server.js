@@ -17,7 +17,7 @@ app.get('/', async (req, res) => {
         const requests = await Request.find();
 
         //* Writing current request to db */
-        const request = await Request.create({ ip: getIp(req) });
+        await Request.create({ ip: getIp(req) });
 
         return res.render('index', { requests });
     } catch (err) {
