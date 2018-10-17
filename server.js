@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const uuid = require('uuid');
 
 const PORT = 8080;
 const app = express();
+const instanceId = uuid();
 
 
 mongoose.connect('mongodb://mongo:27017/app')
@@ -17,7 +19,7 @@ app.get('/', async (req, res) => {
         const requests = await Request.find();
 
         //* Writing current request to db */
-        await Request.create({ ip: getIp(req) });
+        await Request.create({ instanceId, ip: getIp(req) });
 
         return res.render('index', { requests });
     } catch (err) {

@@ -10,7 +10,7 @@
     <h3> Requests </h3>
     <ul>
         <% requests.forEach((req) => { %>
-            <li><%= req.ip %> - <%= req.date %></li>
+            <li> <b> <%= req.instanceId%> </b> <%= req.ip %> - <%= req.date %></li>
         <% }); %>    
     </ul>
 </body>
